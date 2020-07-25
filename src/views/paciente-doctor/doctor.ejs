@@ -1,0 +1,149 @@
+<!-- Seccion de tablas-->
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-4"><br><br>
+                <div class="card" style="width: 18rem;">
+                    <img src="/img/<%= user.img_user%>" class="card-img-top picture center" alt="...">
+                    <div class="card-body">
+                        <h3 class="profile-username text-center"><%= user.nombre_user %></h3>
+
+                        <p class="text-muted text-center">Doctor</p>
+
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <b>Cédula</b> <a class="float-right"><%= user.cedula %></a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Teléfono</b> <a class="float-right"><%= user.telefono %></a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Especialidad</b> <a class="float-right"><%= user.especialidad %></a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Sexo</b> <a class="float-right"><%= user.sexo %></a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Email</b> <a class="float-right"><%= user.email_user %></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+
+                <style>
+                    .btn-dark {
+                        float: right;
+                    }
+
+                    .card-title {
+                        padding-top: 10px;
+                    }
+
+                    .bienvenida {
+                        padding-left: 50px;
+                        padding-right: 50px;
+                        text-align: justify;
+                    }
+                </style>
+                <!-- Content Header (Page header) -->
+
+                <br><br>
+                <div class="card">
+                    <div class="card-header">
+                        <center>
+                            <h3><b>¡Bienvenido(a) <%= user.nombre_user %>!</b></h3>
+                        </center>
+                    </div><br><br>
+                    <!-- /.card-header -->
+                    <h5 class="bienvenida">Aquí podrá consultar sus citas pendientes, verificar su calendario para ver
+                        su disponibilidad y asignar citas. También podrá ver los detalles de las citas que le hayan
+                        solicitado con usted o si han seleccionado una especialidad en específico.
+                    </h5><br><br>
+                    <!-- /.card-body -->
+                </div>
+
+
+
+                <!--Futuras citas table-->
+                <!-- /.card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Solicitudes de citas:</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Paciente</th>
+                                    <th>Motivo de Cita</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            
+                                <% for(var i=0; i < solicitud.length; i++) { %>
+                                <tr>
+                                    <td><%= i + 1%></td>
+                                    <td><%= solicitud[i].paciente %></td>
+                                    <td><%= solicitud[i].razon %></td>
+                                    <td><a class="btn btn-info" style="margin: 5px 0px 5px 0px; font-size: 15px;"href="/AgendarCita/<%=solicitud[i]._id%>">Agendar Cita</a></td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <!--Futuras citas table end-->
+            </div>
+        </div>
+
+        <!-- Registro medico-->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Citas pendientes: </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                    <th>Paciente</th>
+                                    <th>Motivo de cita</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <% for(var i=0; i < citas.length; i++) { %>
+                                <tr>
+                                    <td><%= citas[i].fecha %></td>
+                                    <td><%= citas[i].hora %>
+                                    </td>
+                                    <td><%= citas[i].nombre_pac %> <%= citas[i].apellido_pac %></td>
+                                    <td><%= citas[i].motivo %></td>
+                                </tr>
+                                <% } %>
+         
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Registro medico table end -->

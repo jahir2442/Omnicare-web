@@ -1,0 +1,100 @@
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="img/pills.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Compras </h2>
+                    <div class="breadcrumb__option">
+                        <a href="Farmacia">Farmacia</a>
+                        <span>Carrito de Compras </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shoping Cart Section Begin -->
+<section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="shoping__product">Productos</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0; i < carrito_compra.length; i++) { %>
+                            <tr>
+                                <td class="shoping__cart__item">
+                                    <img src="img/productos-catalogo/<%= carrito_compra[i].imagen%>" width="25%"alt="">
+                                    <h5><%= carrito_compra[i].nombre_prod %></h5>
+                                </td>
+                                <td class="shoping__cart__price">
+                                    <%= carrito_compra[i].precio_unitario %>
+                                </td>
+                                <td class="shoping__cart__quantity">
+                                    <%= carrito_compra[i].cantidad %>
+                                </td>
+                                <td class="shoping__cart__total">
+                                    <%= (carrito_compra[i].cantidad * carrito_compra[i].precio_unitario).toFixed(2)%>
+                                </td>
+                                <td class="shoping__cart__item__close">
+                                        <a class="icon_close" href="/delete/<%=carrito_compra[i]._id %>"></a>
+                                </td>
+                            </tr>
+                            <% } %>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <div class="shoping__cart__btns">
+                    <a href="Catalogo" class="primary-btn cart-btn-right">CONTINUAR COMPRANDO</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="shoping__checkout">
+                    <h5>Resumen del Pedido</h5>
+                    <ul>
+                        
+                           <% var cantidad = 0, sub_total = 0, itbms = 0, total = 0 %>
+
+                            <% for(var i = 0; i < carrito_compra.length; i++) { 
+                               cantidad = cantidad + carrito_compra[i].cantidad
+                               sub_total = sub_total + carrito_compra[i].precio_unitario * carrito_compra[i].cantidad ;
+                            }
+
+                            
+                            itbms = sub_total * 0.07 
+                            total = itbms + sub_total  
+                            itbms = itbms.toFixed(2)
+                            total= total.toFixed(2)
+                            
+                           %>
+                            
+
+                        <li>Cantidad de Productos <span> <%= cantidad %></span></li>
+                        <li>Subtotal <span><%= sub_total.toFixed(2) %> </span></li>
+                        <li>ITBMS <span> <%= itbms %> </span></li>
+                        <li>Total <span><%= total %> </span></li>
+                    </ul>
+                    <a href="Checkout" class="primary-btn">TRAMITAR PEDIDO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shoping Cart Section End -->

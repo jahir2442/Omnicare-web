@@ -1,0 +1,107 @@
+ <!-- Favicons -->
+ <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+ <link rel="manifest" href="../img/favicon/site.webmanifest">
+
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+ <!-- Ionicons -->
+ <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ <!-- icheck bootstrap -->
+ <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+ <!-- Theme style -->
+ <link rel="stylesheet" href="../css/paciente-doctor-css/adminlte.min.css">
+ <!-- Google Font: Source Sans Pro -->
+ <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+ <body class="hold-transition login-page" style="background-image: url(../img/data3.jpg); background-size: cover;"></body>
+
+<div class="register-box">
+    <!-- <div class="register-logo">
+      <a href="../../index2.html"><b>Admin</b>LTE</a>
+    </div> -->
+  
+    <div class="card">
+      <div class="card-body register-card-body">
+        <div class="login-logo">
+          <img src="../img/logo.png" width="200px">
+        </div>
+        <p class="login-box-msg">Ingrese los datos solicitados en los siguientes campos</p>
+        <form action="/Datos-Paciente" method="post">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name= "cedula" placeholder="Cédula">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="far fa-id-card"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="direccion" placeholder="Dirección">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-home"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name= "telefono" placeholder="Teléfono">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-phone"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name= "tipo_sangre" placeholder="Tipo de Sangre">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-heartbeat"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+                <select class="form-control" name="sexo">
+                    <option hidden>Sexo</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="No Especifico">No especificar</option>
+                </select>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-venus-mars"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="icheck-primary">
+                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                <label for="agreeTerms">
+                 Acepto los <a href="#">términos y condiciones</a>
+                </label>
+              </div>
+            </div>
+            <!-- /.col -->
+            <!-- /.col -->
+          </div>
+          <div class="row">
+            <div class="col-12 mt-3 mb-3">
+              <button type="submit" class="btn btn-info btn-block">Confirmar datos</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+  <!-- /.register-box -->
+
+    <!-- jQuery -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../js/paciente-doctor-js/adminlte.min.js"></script>

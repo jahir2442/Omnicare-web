@@ -1,0 +1,183 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Agendar Cita Médica</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+            <li class="breadcrumb-item active">Agendar Cita</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-5">
+        <!-- Profile Image -->
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">Datos del Paciente</h3>
+          </div>
+          <div class="card-body box-profile">
+            <div class="text-center">
+              <img class="profile-user-img img-fluid img-circle"
+                  src="../img/user.png"
+                  alt="User profile picture">
+            </div>
+            <p class="text-muted text-center">Foto de Paciente</p>
+            <h3 class="profile-username text-center"><%=pac.nombre_user%> <%=pac.apellido_user%></h3>
+
+            <p class="text-muted text-center">Nombre de Paciente</p>
+
+            <ul class="list-group list-group-unbordered mb-3">
+              <li class="list-group-item">
+                <b>Cédula</b> <a class="float-right"><%=pac.cedula%></a>
+              </li>
+              <li class="list-group-item">
+                <b>Teléfono</b> <a class="float-right"><%=pac.telefono%></a>
+              </li>
+              <li class="list-group-item">
+                <b>Sexo</b> <a class="float-right"><%=pac.sexo%></a>
+              </li>
+              <li class="list-group-item">
+                <b>Tipo de Sangre</b> <a class="float-right"><%=pac.tipo_sangre%></a>
+              </li>
+              <li class="list-group-item">
+                <b>Email</b> <a class="float-right"><%=pac.email_user%></a>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-md-7">
+                    <b>Motivo de Cita</b> 
+                  </div>
+                  <div class="col-md-5">
+                    <a class="float-right"><%=solicitudcita.razon%></a>
+                  </div>
+               </div>
+              </li>
+            </ul>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /Profile Image .card -->
+
+          
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+        
+        <!-- /.col (left) -->
+        <div class="col-md-7">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Selección de fecha y hora de cita médica</h3>
+            </div>
+            <div class="card-body">
+              <!-- Date -->
+              <style>
+              .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 5px;
+              }
+
+              .card-primary:not(.card-outline)>.card-header {
+                background-color: #007EA7 !important;
+              }
+
+              .btn-primary{
+                  background-color: lightcoral !important;
+                  border-color: lightpink !important;
+                }
+
+                .btn-block {
+                  display: block;
+                  width: 50% !important;
+                  margin-left: auto;
+                  margin-right: auto;
+                }
+
+                .float-left{
+                  margin-right: 30px;
+                }
+
+                /*.btn-default{
+                  display: block;
+                  width: 20% !important;
+                  margin-left: auto;
+                  margin-right: auto;
+                }*/
+              </style>
+
+              <form action="/AgendarCita" class="form-group" method="post">
+                <input type="hidden" name="nombre_pac" value="<%=pac.nombre_user%>"/>
+                <input type="hidden" name="apellido_pac" value="<%=pac.apellido_user%>"/>
+                <input type="hidden" name="motivo" value="<%=solicitudcita.razon%>"/>
+                <input type="hidden" name="email_pac" value= "<%=pac.email_user%>"/>
+                <img class="center" src="../img/datetime.png" alt="hora" width="200" height="200" >
+                <label>Seleccione la fecha en la que desea asignar la cita y verifique su disponibilidad.</label><br>
+                <label>Fecha:</label>
+                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                      <input type="text" name="fecha" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                      <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                  </div>
+                <div class="bootstrap-timepicker">
+                  <label>Seleccione la hora en la que desea agendar la cita:</label><br>
+                  <label>Hora:</label>
+
+                  <div class="input-group date" id="timepicker" data-target-input="nearest">
+                    <input type="text" name= "hora" class="form-control datetimepicker-input" data-target="#timepicker"/>
+                    <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="far fa-clock"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <br><br>
+                <button type="button" class="btn btn-primary btn-block" data-target="#exampleModal2" data-toggle="modal"><b>Agendar Cita</b></button>
+            
+                <!--modal-->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel2">¡Cita agendada exitosamente!</h5>
+                          </div>
+
+                          <div class="modal-body">
+                              <center><img src="/img/check2.png" style="width: 220px !important;" alt=""></center>
+                              <center><p>Debe comunicarse con el paciente a través del correo electrónico proporcionado o su número de teléfono para recordarle su cita.</p></center>
+
+                              <center><button type="submit" class="btn btn-info">Cerrar</button></center>
+
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                <!--fin modal-->
+            
+            </form>
+            <!-- /.form group -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col (right) -->
+      </div>
+      <!-- /.row -->
+      </div>
+    </section>
+      
+    
+
+      
